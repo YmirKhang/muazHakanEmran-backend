@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+    _id: {type:String, required: true},
     name: {type:String, required: true},
-    credits: Number,
+    credits: {type: Number, default: 0},
     location : {
         lat: Number,
         lng: Number},
