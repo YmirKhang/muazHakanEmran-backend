@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+const vendors = require('./routes/vendors');
 
 var app = express();
 
@@ -41,6 +42,7 @@ next();
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/vendors', vendors);
 
 
 // catch 404 and forward to error handler
