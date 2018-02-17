@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const mongoose = require("mongoose");
+var client = require('../utils/redis');
 
 const User = require("../models/user")
 
@@ -39,6 +40,22 @@ router.get('/', function(req, res, next) {
                 error: err
             });
         });
+});
+
+router.post("recycle", (req,res,next)=>{
+    const tx_id = req.body.tx_id;
+    const user_id = req.body.user_id;
+    client.lrange("transaction_keys",0,-1,function(err,replies){
+       if(replies.indexOf(tx_id)!=-1){
+           res.status(200).json({
+               msg: "Tx id is valid"
+           });
+       }else{
+           res.status(404).json({
+               msg: "Not a valid tx id"
+           });
+       }
+    });
 });
 
 router.post("/subscribe", (req,res,next) => {

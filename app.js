@@ -15,6 +15,12 @@ const vendors = require('./routes/vendors');
 
 var app = express();
 
+var client = require('./utils/redis');
+
+client.get("muaz" ,function(err,reply){
+    console.log(reply);
+});
+
 const mongoURL = process.env.MONGODB_URI || "mongodb://localhost/denemedb";
 mongoose.connect(mongoURL);
 
