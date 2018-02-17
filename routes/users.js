@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 var client = require('../utils/redis');
 
 const User = require("../models/user")
+const Vendor = require("../models/vendor")
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -66,9 +67,15 @@ router.post("/recycle", (req,res,next)=>{
                            .exec().then(doc =>{
                            res.status(201).json({
                                message: "Transaction is successfully made",
-                               _id: doc.id,
+                               android_id: doc.id,
                                credits: doc.credits,
                            });
+                       }).then(()=>{
+                           Vendor.update({
+                               _id:replies._id,
+                           },{
+                            $inc:{holding:replies.quantity}
+                           }).exec();
                        })
 
                    }).catch(err => {
@@ -119,7 +126,7 @@ router.get('/me/:userid',(req,res,next)=>{
         android_id:1,
         credits:1,
         openTasks: { $filter:{ input:"$offeredJobs", as:"job",cond:{ $ne:["$$job.finished", false] }  }},
-        closedTasks: { $filter:{ input:"$offeredJobs", as:"job",cond:{ $eq:["$$job.finished", false] }  }},
+        closedTasks: { $filter:{ input:"$offeredJobs", as:"job",cond:{ $eq:["$$job.finished", true] }  }},
     }},{$match: {android_id: id}}]).exec().then(doc=>{
         obj = {me:doc[0]}
         res.status(200).json({

@@ -256,7 +256,7 @@ function getStops(startCor, searchCoverage) {
 
 
 
-        if(vendors[i].cosSimToStart > 1-searchCoverage && vendors[i].cosSimToTarget > 1-searchCoverage && vendors[i].holding>0){
+        if(vendors[i].cosSimToStart > 1-searchCoverage && vendors[i].cosSimToTarget > 1-searchCoverage && vendors[i].holding>=0){
             inConeList.push(vendors[i])
         }
         return inConeList
