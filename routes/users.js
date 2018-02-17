@@ -42,7 +42,7 @@ router.get('/', function(req, res, next) {
         });
 });
 
-router.post("recycle", (req,res,next)=>{
+router.post("/recycle", (req,res,next)=>{
     const tx_id = req.body.tx_id;
     const user_id = req.body.user_id;
     client.lrange("transaction_keys",0,-1,function(err,replies){
