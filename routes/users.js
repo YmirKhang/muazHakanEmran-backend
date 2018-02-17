@@ -77,20 +77,40 @@ router.post("/createJob", (req,res,next) => {
     job.location.coordinates.push(req.body.lat);
     job.location.coordinates.push(req.body.lng);
     job._id = mongoose.Types.ObjectId();
-    User.update(
-        {android_id: id},
-        { $push: { offeredJobs: job}})
+    User.findOne(
+        { android_id:id },
+    ) .select("_id android_id name offeredJobs")
         .exec()
-        .then(result => {
-            res.status(201).json({
-                message: "Job is successfully added",
-                job: result
-            });
-        }).catch(err => {
-            res.status(500).json({
-                error: err
-            });
+        .then(doc => {
+            if(doc){
+                return doc.android_id;
+            }else{
+                const user = new User({
+                    _id: mongoose.Types.ObjectId(),
+                    android_id: req.body.id,
+                    location: req.body.location
+                });
+
+                var savePromise = user.save().then(user.android_id).then(JSON.parse);
+                return savePromise;
+            }
+        }).then(id=>{
+            User.update(
+                {android_id: id},
+                { $push: { offeredJobs: job}})
+                .exec()
+                .then(result => {
+                    res.status(201).json({
+                        message: "Job is successfully added",
+                        job: result
+                    });
+                }).catch(err => {
+                res.status(500).json({
+                    error: err
+                });
         });
+    });
+
 
 });
 
