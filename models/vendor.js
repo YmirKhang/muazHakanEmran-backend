@@ -7,8 +7,17 @@ const vendorSchema = mongoose.Schema({
     capacity: {type: Number, required: true},
     holding: {type:Number, default:0 },
     isFactory: { type:Boolean, default: false},
-    neighbors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Vendor', required: true}]
+    neighbors: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Vendor', required: true}]
 });
+
+vendorSchema.pre('remove', function (next) {
+    var vendor = this;
+    vendor.model('Vendor').update(
+        { neighbors: {$in: vendor.vendors}},
+        { $pull: { vendor: vendor._id } },
+        { multi: true},
+    next);
+})
 
 vendorSchema.index({"location": "2dsphere"});
 

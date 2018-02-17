@@ -9,6 +9,7 @@ router.post("/", (req, res, next) => {
     const vendor = new Vendor({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
+        isFactory: req.body.isFactory,
         location: {
             coordinates: [req.body.lat, req.body.lng]
         },
@@ -39,8 +40,8 @@ router.post("/", (req, res, next) => {
 });
 
 router.get('/',(req,res,next)=>{
-    Vendor.find()
-        .select("name location holding capacity _id neighbors")
+    Vendor.find().populate("neighbors")
+        .select("name location holding capacity _id neighbors isFactory")
         .exec()
         .then(docs => {
             const response = {
@@ -52,7 +53,13 @@ router.get('/',(req,res,next)=>{
                         capacity: doc.capacity,
                         _id: doc._id,
                         location:doc.location,
-                        neighbors: doc.neighbors
+                        neighbors: doc.neighbors.map(doc => {
+                            return {
+                                _id: doc._id,
+                                coordinates: [doc.location.coordinates[0], doc.location.coordinates[1]]
+                            };
+                        }),
+                        isFactory: doc.isFactory
                     };
                 })
             };

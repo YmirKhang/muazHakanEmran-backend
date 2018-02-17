@@ -13,7 +13,7 @@ const userSchema = mongoose.Schema({
         quantity: Number,
         from : Date,
         to: Date,
-        location: {lat: Number, lng: Number},
+        location : { type: { type: String, default:'Point' }, coordinates: [] },
         onHold: {type:Boolean, default: false}
     }]
 
