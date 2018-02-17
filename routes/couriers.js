@@ -32,10 +32,10 @@ router.post('/getVendorRoute',(req,res,next)=>{
                         name: doc.name,
                         holding: doc.holding,
                         capacity: doc.capacity,
+                        isFactory: doc.isFactory,
                         _id: doc._id,
                         lat: doc.location.coordinates[0],
                         lng: doc.location.coordinates[1],
-                        distance: doc.distance
                     };
                 })
             };

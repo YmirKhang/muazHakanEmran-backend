@@ -67,7 +67,7 @@ router.post("/recycle", (req,res,next)=>{
                            .exec().then(doc =>{
                            res.status(201).json({
                                message: "Transaction is successfully made",
-                               android_id: doc.id,
+                               android_id: doc._id,
                                credits: doc.credits,
                            });
                        }).then(()=>{
