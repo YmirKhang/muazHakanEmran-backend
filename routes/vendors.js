@@ -110,7 +110,8 @@ router.get('/find/',(req,res,next) =>{
                         capacity: doc.capacity,
                         _id: doc._id,
                         lat: doc.location.coordinates[0],
-                        lng: doc.location.coordinates[1]
+                        lng: doc.location.coordinates[1],
+                        distance: doc.distance
                     };
                 })
             };
