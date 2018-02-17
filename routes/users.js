@@ -8,7 +8,7 @@ const User = require("../models/user")
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     User.find()
-        .select("_id android_id name offeredJobs")
+        .select("_id android_id name offeredJobs credits")
         .exec()
         .then(docs => {
             const response = {
@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
                         name: doc.name,
                         _id: doc._id,
                         android_id: doc.android_id,
-                        _id: doc._id,
+                        credits: doc.credits,
                         offeredJobs:doc.offeredJobs.map(job =>{
                             return{
                                 lat: job.location.coordinates[0],
@@ -48,15 +48,29 @@ router.post("/recycle", (req,res,next)=>{
     client.lrange("transaction_keys",0,-1,function(err,replies){
        if(replies.indexOf(tx_id)!=-1){
            client.hgetall(tx_id,function(err,replies){
+               const job={
+                   finished:true,
+                   _id: mongoose.Types.ObjectId(),
+                   quantity: replies.quantity
+               }
+
                User.update(
-                   {android_id: user_id},{ $inc:{credits:replies.quantity}  },
-                   { $push: { offeredJobs: {finished:true, _id: mongoose.Types.ObjectId(), quantity: replies.quantity}}})
+                   {android_id: user_id},
+                   { $push: { offeredJobs: job}})
+                   .update({android_id: user_id},{ $inc:{credits:replies.quantity}  })
                    .exec()
                    .then(result => {
-                       res.status(201).json({
-                           message: "Transaction is successfully made",
-                           update: result
-                       });
+                       User.findOne(
+                           { android_id:id },
+                       ) .select("_id android_id credits")
+                           .exec().then(doc =>{
+                           res.status(201).json({
+                               message: "Transaction is successfully made",
+                               _id: doc.id,
+                               credits: doc.credits,
+                               android_id:doc.android_id
+                           });
+                       })
                    }).catch(err => {
                    res.status(500).json({
                        error: err
