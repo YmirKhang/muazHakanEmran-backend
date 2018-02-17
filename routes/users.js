@@ -61,19 +61,19 @@ router.post("/recycle", (req,res,next)=>{
                    .exec()
                    .then(result => {
                        User.findOne(
-                           { android_id:id },
+                           { android_id:user_id },
                        ) .select("_id android_id credits")
                            .exec().then(doc =>{
                            res.status(201).json({
                                message: "Transaction is successfully made",
                                _id: doc.id,
                                credits: doc.credits,
-                               android_id:doc.android_id
                            });
                        })
+
                    }).catch(err => {
                    res.status(500).json({
-                       error: err
+                       error: "Transaction couldn't be fulfilled"
                    });
 
            });
