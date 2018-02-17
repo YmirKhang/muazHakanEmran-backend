@@ -11,7 +11,8 @@ router.get('/', function(req, res, next) {
 
 router.post("/subscribe", (req,res,next) => {
     const user = new User({
-        _id: req.body.id,
+        _id: mongoose.Types.ObjectId(),
+        android_id: req.body.id,
         name: req.body.name,
         location: req.body.location
     });

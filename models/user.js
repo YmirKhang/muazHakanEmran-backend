@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
-    _id: {type:String, required: true},
+    _id: mongoose.Schema.Types.ObjectId,
+    android_id: {type:String, required: true},
     name: {type:String, required: true},
     credits: {type: Number, default: 0},
     location : {
