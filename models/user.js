@@ -17,6 +17,12 @@ const userSchema = mongoose.Schema({
         onHold: {type:Boolean, default: false},
         created: {type:Date, default: Date.now()},
         finished: {type: Boolean, default: false}
+    }],
+    activeRoute:[{
+        _id: mongoose.Schema.Types.ObjectId,
+        vendors: [{type: mongoose.Schema.Types.ObjectId, ref: 'Vendor', required: true}],
+        created: {type: Date, default: Date.now()},
+        finished: {type:Boolean, default: false},
     }]
 
 });

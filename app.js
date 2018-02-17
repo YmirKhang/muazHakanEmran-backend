@@ -12,6 +12,7 @@ const swaggerUi = require('swagger-ui-express'),
 var index = require('./routes/index');
 var users = require('./routes/users');
 const vendors = require('./routes/vendors');
+const couriers = require('./routes/couriers');
 
 var app = express();
 
@@ -53,6 +54,7 @@ next();
 app.use('/', index);
 app.use('/users', users);
 app.use('/vendors', vendors);
+app.use('/couriers', couriers);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
