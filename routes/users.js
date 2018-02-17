@@ -47,9 +47,11 @@ router.post("/recycle", (req,res,next)=>{
     const user_id = req.body.user_id;
     client.lrange("transaction_keys",0,-1,function(err,replies){
        if(replies.indexOf(tx_id)!=-1){
-           res.status(200).json({
-               msg: "Tx id is valid"
-           });
+           client.hgetall(tx_id,function(err,replies){
+               res.status(200).json({
+                    msg: replies
+               });
+           })
        }else{
            res.status(404).json({
                msg: "Not a valid tx id"
