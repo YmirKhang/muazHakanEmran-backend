@@ -68,6 +68,42 @@ router.post("/subscribe", (req,res,next) => {
         });
 });
 
+router.get('/me/:userid',(req,res,next)=>{
+    const id = req.params.userid;
+    User.aggregate([{$project:{
+        _id:1,
+        android_id:1,
+        credits:1,
+        openTasks: { $filter:{ input:"$offeredJobs", as:"job",cond:{ $ne:["$$job.finished", false] }  }},
+        closedTasks: { $filter:{ input:"$offeredJobs", as:"job",cond:{ $eq:["$$job.finished", false] }  }},
+    }},{$match: {android_id: id}}]).exec().then(doc=>{
+        obj = {me:doc[0]}
+        res.status(200).json({
+            _id:doc[0]._id,
+            android_id: doc[0].android_id,
+            credits:doc[0].credits,
+            openJobs: doc[0].openTasks.map(job=>{
+                return{
+                    _id: job._id,
+                    quantity: job.quantity,
+                    lat: job.location.coordinates[0],
+                    lng: job.location.coordinates[1]
+                }
+            }),
+            closedJobs: doc[0].closedTasks.map(job=>{
+                return{
+                    _id: job._id,
+                    quantity: job.quantity,
+                }
+
+            })
+        });
+    }).catch(err =>{
+        res.status(500).json({error: err});
+    });
+
+})
+
 router.post("/createJob", (req,res,next) => {
     const id = req.body.id;
     const job = {};

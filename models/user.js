@@ -14,7 +14,9 @@ const userSchema = mongoose.Schema({
         from : Date,
         to: Date,
         location : { type: { type: String, default:'Point' }, coordinates: [] },
-        onHold: {type:Boolean, default: false}
+        onHold: {type:Boolean, default: false},
+        created: {type:Date, default: Date.now()},
+        finished: {type: Boolean, default: false}
     }]
 
 });
