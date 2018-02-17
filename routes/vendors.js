@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const neighbor = require("../utils/neighbor");
 
 const Vendor = require("../models/vendor");
 
@@ -17,6 +18,7 @@ router.post("/", (req, res, next) => {
         .save()
         .then(result => {
             console.log(result);
+
             res.status(201).json({
                 message: "Created vendor successfully",
                 createdProduct: {
@@ -32,11 +34,13 @@ router.post("/", (req, res, next) => {
                 error: err
             });
         });
+    neighbor.updateNeighbors(vendor);
+
 });
 
 router.get('/',(req,res,next)=>{
     Vendor.find()
-        .select("name location holding capacity _id")
+        .select("name location holding capacity _id neighbors")
         .exec()
         .then(docs => {
             const response = {
@@ -47,7 +51,8 @@ router.get('/',(req,res,next)=>{
                         holding: doc.holding,
                         capacity: doc.capacity,
                         _id: doc._id,
-                        location:doc.location
+                        location:doc.location,
+                        neighbors: doc.neighbors
                     };
                 })
             };

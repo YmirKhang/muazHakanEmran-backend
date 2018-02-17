@@ -6,7 +6,8 @@ const vendorSchema = mongoose.Schema({
     location : { type: { type: String, default:'Point' }, coordinates: [] },
     capacity: {type: Number, required: true},
     holding: {type:Number, default:0 },
-    isFactory: { type:Boolean, default: false}
+    isFactory: { type:Boolean, default: false},
+    neighbors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Vendor', required: true}]
 });
 
 vendorSchema.index({"location": "2dsphere"});
