@@ -48,9 +48,20 @@ router.post("/recycle", (req,res,next)=>{
     client.lrange("transaction_keys",0,-1,function(err,replies){
        if(replies.indexOf(tx_id)!=-1){
            client.hgetall(tx_id,function(err,replies){
-               res.status(200).json({
-                    msg: replies
-               });
+               User.update(
+                   {android_id: user_id},{ $inc:{credits:replies.quantity}  },
+                   { $push: { offeredJobs: {finished:true, _id: mongoose.Types.ObjectId(), quantity: replies.quantity}}})
+                   .exec()
+                   .then(result => {
+                       res.status(201).json({
+                           message: "Transaction is successfully made",
+                           update: result
+                       });
+                   }).catch(err => {
+                   res.status(500).json({
+                       error: err
+                   }).then;
+
            })
        }else{
            res.status(404).json({
