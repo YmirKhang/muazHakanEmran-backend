@@ -17,7 +17,7 @@ exports.updateNeighbors = function(vendor){
             }
         },
         {$limit: 10},
-        {$match: { _id: { $ne: vendor.id}} },
+        {$match: { _id: { $ne: vendor._id}} },
         {$sort:{ distance:1 }}]
     ).exec()
         .then(docs=>    {
@@ -46,7 +46,7 @@ const neighborMapper = (node) =>{
             }
         },
         {$limit: 10},
-        {$match: { _id: { $ne: node.id}} },
+        {$match: { _id: { $ne: node._id}} },
         {$sort:{ distance:1 }}])
         .exec()
         .then(docs =>{
