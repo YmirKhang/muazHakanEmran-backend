@@ -60,10 +60,10 @@ router.post("/recycle", (req,res,next)=>{
                    }).catch(err => {
                    res.status(500).json({
                        error: err
-                   }).then;
+                   });
 
-           })
-       }else{
+           });
+       })}else{
            res.status(404).json({
                msg: "Not a valid tx id"
            });
