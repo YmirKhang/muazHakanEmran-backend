@@ -100,11 +100,11 @@
       <file leaf-file-name="couriers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/couriers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="103" column="38" lean-forward="false" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="38" />
+            <state relative-caret-position="135">
+              <caret line="97" column="47" lean-forward="true" selection-start-line="97" selection-start-column="47" selection-end-line="97" selection-end-column="47" />
               <folding>
                 <element signature="e#276#2435#0" expanded="false" />
-                <element signature="e#3741#4648#0" expanded="false" />
+                <element signature="e#3623#4530#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -287,7 +287,7 @@
       <workItem from="1518877300064" duration="5314000" />
       <workItem from="1518887430566" duration="9749000" />
       <workItem from="1518933073449" duration="6204000" />
-      <workItem from="1518941371674" duration="8384000" />
+      <workItem from="1518941371674" duration="8518000" />
     </task>
     <task id="LOCAL-00001" summary="initial backend config">
       <created>1518809106142</created>
@@ -541,11 +541,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518952460031</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Tatto redis bug">
+      <created>1518952606643</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1518952606643</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73426000" />
+    <option name="totallyTimeSpent" value="73560000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1777" y="108" width="1863" height="1092" extended-state="6" />
@@ -602,7 +609,8 @@
     <MESSAGE value="Fix params" />
     <MESSAGE value="Debug statements" />
     <MESSAGE value="Add endpoint for delivery to the factory and credit the user" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add endpoint for delivery to the factory and credit the user" />
+    <MESSAGE value="Tatto redis bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tatto redis bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -617,7 +625,7 @@
           <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
           <folding>
             <element signature="e#276#2435#0" expanded="false" />
-            <element signature="e#3741#4648#0" expanded="false" />
+            <element signature="e#3623#4530#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -958,11 +966,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/couriers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="103" column="38" lean-forward="false" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="38" />
+        <state relative-caret-position="135">
+          <caret line="97" column="47" lean-forward="true" selection-start-line="97" selection-start-column="47" selection-end-line="97" selection-end-column="47" />
           <folding>
             <element signature="e#276#2435#0" expanded="false" />
-            <element signature="e#3741#4648#0" expanded="false" />
+            <element signature="e#3623#4530#0" expanded="false" />
           </folding>
         </state>
       </provider>
