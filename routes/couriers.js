@@ -50,7 +50,7 @@ router.post('/getVendorRoute',(req,res,next)=>{
                     })
 
                 };
-                
+
                 const route = {
                     _id: mongoose.Types.ObjectId(),
                     vendors: docs.map(doc => {
@@ -91,6 +91,28 @@ router.get('/currentJob/:user_id',(req,res,next)=>{
         res.status(500).json({error:err});
     })
 });
+
+router.post('/finishJob',(req,res,next)=>{
+    const user_id = req.body.user_id;
+    const tx_id = req.body.tx_id;
+    client.hgetall(tx_id,function(err,replies){
+       let bounty = replies.bounty;
+       let place = replies.factory;
+       User.update({android_id:user_id},{$inc: {credits: Number(bounty)}}).exec().then(doc=>{
+           User.findOne({android_id: user_id}).select('android_id credits _id').exec().then(doc=>{
+
+               res.status(200).json({
+                   credits: doc.credits,
+                   android_id:doc.android_id,
+                   msg:"You have earned " + bounty + " credits for delivering to " + place,
+                   _id: doc._id
+               });
+           }).catch(err=>{
+               res.status(500).json({error:err});
+           })
+       });
+    });
+})
 
 router.post('/transactVendor',(req,res,next)=>{
    const vendor_id =  req.body.vendor_id;
