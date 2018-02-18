@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="395267df-cb78-4197-9d73-b68d45a2a4fd" name="Default" comment="Fix me endpoint for tasks">
+    <list default="true" id="395267df-cb78-4197-9d73-b68d45a2a4fd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/couriers.js" afterPath="$PROJECT_DIR$/routes/couriers.js" />
     </list>
@@ -100,8 +100,8 @@
       <file leaf-file-name="couriers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/couriers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="25" column="94" lean-forward="false" selection-start-line="25" selection-start-column="94" selection-end-line="25" selection-end-column="94" />
+            <state relative-caret-position="153">
+              <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -283,7 +283,7 @@
       <workItem from="1518877300064" duration="5314000" />
       <workItem from="1518887430566" duration="9749000" />
       <workItem from="1518933073449" duration="6204000" />
-      <workItem from="1518941371674" duration="1115000" />
+      <workItem from="1518941371674" duration="1218000" />
     </task>
     <task id="LOCAL-00001" summary="initial backend config">
       <created>1518809106142</created>
@@ -460,11 +460,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518940588633</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Fix me endpoint for tasks">
+      <created>1518942494735</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1518942494735</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66157000" />
+    <option name="totallyTimeSpent" value="66260000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1777" y="108" width="1863" height="1092" extended-state="6" />
@@ -514,9 +521,9 @@
     <MESSAGE value="Fix recycling id bug" />
     <MESSAGE value="Add redis bounty for couriers" />
     <MESSAGE value="Handle no route" />
-    <MESSAGE value="Fix me endpoint for tasks" />
     <MESSAGE value="Fix mongodb errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix mongodb errors" />
+    <MESSAGE value="Fix me endpoint for tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix me endpoint for tasks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -869,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/couriers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" column="94" lean-forward="false" selection-start-line="25" selection-start-column="94" selection-end-line="25" selection-end-column="94" />
+        <state relative-caret-position="153">
+          <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
           <folding />
         </state>
       </provider>

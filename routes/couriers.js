@@ -10,7 +10,7 @@ const Vendor = require("../models/vendor");
 router.post('/getVendorRoute',(req,res,next)=>{
     const lat = req.body.lat;
     const lng = req.body.lng;
-    const user_id = req.body.use_id;
+    const user_id = req.body.user_id;
     const amount = req.body.amount;
     Vendor.aggregate([
         {
