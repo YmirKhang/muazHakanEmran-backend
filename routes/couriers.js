@@ -12,7 +12,7 @@ router.post('/getVendorRoute',(req,res,next)=>{
     const lng = req.body.lng;
     const user_id = req.body.user_id;
     const amount = req.body.amount;
-
+    console.log(req.body);
     Vendor.aggregate([
         {
             $geoNear: {
@@ -50,7 +50,7 @@ router.post('/getVendorRoute',(req,res,next)=>{
                     })
 
                 };
-                console.log(docs);
+                
                 const route = {
                     _id: mongoose.Types.ObjectId(),
                     vendors: docs.map(doc => {
