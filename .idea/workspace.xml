@@ -100,8 +100,8 @@
       <file leaf-file-name="couriers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/couriers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+            <state relative-caret-position="323">
+              <caret line="25" column="66" lean-forward="false" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -283,7 +283,7 @@
       <workItem from="1518877300064" duration="5314000" />
       <workItem from="1518887430566" duration="9749000" />
       <workItem from="1518933073449" duration="6204000" />
-      <workItem from="1518941371674" duration="1218000" />
+      <workItem from="1518941371674" duration="1651000" />
     </task>
     <task id="LOCAL-00001" summary="initial backend config">
       <created>1518809106142</created>
@@ -467,11 +467,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518942494735</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="fix typo">
+      <created>1518942597311</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1518942597311</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66260000" />
+    <option name="totallyTimeSpent" value="66693000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1777" y="108" width="1863" height="1092" extended-state="6" />
@@ -523,7 +530,8 @@
     <MESSAGE value="Handle no route" />
     <MESSAGE value="Fix mongodb errors" />
     <MESSAGE value="Fix me endpoint for tasks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix me endpoint for tasks" />
+    <MESSAGE value="fix typo" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix typo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -876,8 +884,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/couriers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+        <state relative-caret-position="323">
+          <caret line="25" column="66" lean-forward="false" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
           <folding />
         </state>
       </provider>
