@@ -96,8 +96,8 @@ router.post('/finishJob',(req,res,next)=>{
     const user_id = req.body.user_id;
     const tx_id = req.body.tx_id;
     client.hgetall(tx_id,function(err,replies){
-       let bounty = replies.bounty;
-       let place = replies.factory;
+       let bounty = replies.bounty || 220;
+       let place = replies.factory || Sisli;
        User.update({android_id:user_id},{$inc: {credits: Number(bounty)}}).exec().then(doc=>{
            User.findOne({android_id: user_id}).select('android_id credits _id').exec().then(doc=>{
 
