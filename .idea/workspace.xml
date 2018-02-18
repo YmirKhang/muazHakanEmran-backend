@@ -50,7 +50,7 @@
       <file leaf-file-name="vendors.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/vendors.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="935">
               <caret line="55" column="30" lean-forward="false" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="30" />
               <folding />
             </state>
@@ -100,8 +100,8 @@
       <file leaf-file-name="couriers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/couriers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="25" column="66" lean-forward="false" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
+            <state relative-caret-position="425">
+              <caret line="25" column="39" lean-forward="true" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -110,7 +110,7 @@
       <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="1394">
               <caret line="225" column="22" lean-forward="true" selection-start-line="225" selection-start-column="22" selection-end-line="225" selection-end-column="22" />
               <folding />
             </state>
@@ -283,7 +283,7 @@
       <workItem from="1518877300064" duration="5314000" />
       <workItem from="1518887430566" duration="9749000" />
       <workItem from="1518933073449" duration="6204000" />
-      <workItem from="1518941371674" duration="1651000" />
+      <workItem from="1518941371674" duration="2197000" />
     </task>
     <task id="LOCAL-00001" summary="initial backend config">
       <created>1518809106142</created>
@@ -474,11 +474,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518942597311</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="fix typo">
+      <created>1518943038613</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1518943038613</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66693000" />
+    <option name="totallyTimeSpent" value="67239000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1777" y="108" width="1863" height="1092" extended-state="6" />
@@ -850,14 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/vendors.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="55" column="30" lean-forward="false" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -874,9 +873,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/vendors.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="30" lean-forward="false" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/utils/search.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="1394">
           <caret line="225" column="22" lean-forward="true" selection-start-line="225" selection-start-column="22" selection-end-line="225" selection-end-column="22" />
           <folding />
         </state>
@@ -884,8 +891,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/couriers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="25" column="66" lean-forward="false" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
+        <state relative-caret-position="425">
+          <caret line="25" column="39" lean-forward="true" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
           <folding />
         </state>
       </provider>

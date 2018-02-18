@@ -23,7 +23,7 @@ router.post('/getVendorRoute',(req,res,next)=>{
                 spherical: true,
                 maxDistance: 20000
             }
-        },{$match:{ $or:[{holding: {$gte: 0}},{isFactory:{ $ne: false}}]}},{ $sort: {isFactory:-1}}]
+        },{$match:{ $or:[{holding: {$gt: 0}},{isFactory:{ $ne: false}}]}},{ $sort: {isFactory:1}}]
     ).exec()
         .then(docs => {
             if(docs.length>0) {
