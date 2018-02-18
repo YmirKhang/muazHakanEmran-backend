@@ -26,44 +26,46 @@ router.post('/getVendorRoute',(req,res,next)=>{
         },{$match:{$or:[{holding: {$gt: 0}},{isFactory: {$eq:true}}]}},{ $sort: {isFactory:1}}]
     ).exec()
         .then(docs => {
-            const response = {
-                vendors: docs.map(doc => {
-                    return {
-                        name: doc.name,
-                        holding: doc.holding,
-                        capacity: doc.capacity,
-                        isFactory: doc.isFactory,
-                        _id: doc._id,
-                        lat: doc.location.coordinates[0],
-                        lng: doc.location.coordinates[1],
-                    };
+            if(docs.length>1) {
+                const response = {
+                    vendors: docs.map(doc => {
+                        return {
+                            name: doc.name,
+                            holding: doc.holding,
+                            capacity: doc.capacity,
+                            isFactory: doc.isFactory,
+                            _id: doc._id,
+                            lat: doc.location.coordinates[0],
+                            lng: doc.location.coordinates[1],
+                        };
 
-                })
+                    })
 
-            };
-            const route={
-                _id : mongoose.Types.ObjectId(),
-                vendors: docs.map(doc=> {
-                    return {
-                        _id:doc._id
-                    }
+                };
+
+                const route = {
+                    _id: mongoose.Types.ObjectId(),
+                    vendors: docs.map(doc => {
+                        return {
+                            _id: doc._id
+                        }
+                    })
+                }
+                res.status(200).json(response);
+                let key = "bounty" + user_id;
+
+                client.set(key, 0,function(err,reply){
                 })
+                User.update({android_id : user_id},
+                    {$set: {"activeRoute": route}}).exec()
+            }else{
+                res.status(200).json({msg:"Can't find route for now"});
             }
-            res.status(200).json(response);
-            let key = "bounty" + user_id;
 
-            client.set(key, 0,function(err,reply){
-            })
-            User.update({android_id : user_id},
-                {$set: {"activeRoute": route}}).exec()
         })
         .catch(err=>{
             res.status(500).json({error: err});
         })
-});
-
-router.post('/getJobsRoute',(req,res,next)=>{
-
 });
 
 router.post('/getJobs',(req,res,next)=>{
@@ -88,7 +90,13 @@ router.post('/transactVendor',(req,res,next)=>{
     console.log(key);
     client.incrby(key, bounty,function(err,reply){
     })
-    //TODO buraya vendor updatelenicek,
+    Vendor.findOne({_id:vendor_id}).select('holding _id').exec().then(doc=>{
+        let holding  = doc.holding - Number(bounty);
+        if(holding<0){holding=0}
+        Vendor.update({_id:vendor_id},{holding:holding}).exec().then().catch(err=>{
+                console.log("Error during vendor update");
+        })
+    }).catch(err =>{ console.log("error during vendor update")});
     User.findOne({android_id: user_id}).select('activeRoute android_id').exec().then(doc=>{
         res.status(200).json(doc);
     }).catch(err=>{
