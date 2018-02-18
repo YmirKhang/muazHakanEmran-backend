@@ -106,7 +106,7 @@ router.post('/finishJob',(req,res,next)=>{
                res.status(200).json({
                    credits: doc.credits,
                    android_id:doc.android_id,
-                   msg:"You have earned " + bounty + " credits for delivering to " + place,
+                   message:"You have earned " + bounty + " credits for delivering to: " + place,
                    _id: doc._id
                });
            }).catch(err=>{
