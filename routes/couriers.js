@@ -23,7 +23,7 @@ router.post('/getVendorRoute',(req,res,next)=>{
                 spherical: true,
                 maxDistance: 20000
             }
-        },{$match:{ $or:[{holding: {$gte: "0"}},{isFactory: {$eq:true}}]}},{ $sort: {isFactory:1}}]
+        },{$match:{ $or:[{holding: {$gte: 0}},{isFactory: {$eq:true}}]}},{ $sort: {isFactory:-1}}]
     ).exec()
         .then(docs => {
             if(docs.length>0) {
@@ -51,13 +51,16 @@ router.post('/getVendorRoute',(req,res,next)=>{
                         }
                     })
                 }
+                console.log(route);
                 res.status(200).json(response);
                 let key = "bounty" + user_id;
 
                 client.set(key, 0,function(err,reply){
                 })
                 User.update({android_id : user_id},
-                    {$set: {"activeRoute": route}}).exec()
+                    {activeRoute: route}).exec().then(res=>{
+                        console.log(res);
+                })
             }else{
                 res.status(200).json({msg:"Can't find route for now"});
             }
